@@ -22,6 +22,7 @@ class ToletSpider(scrapy.Spider):
             item['property_name'] = apartment.xpath('div[@class="row"]/div[contains(@class, "property-caption col-lg-12")]/a/h2/text()').extract()
             item['Price'] = apartment.xpath('div[@class="row"]/div[contains(@class, "property-metadata col-lg-6")]/h5[@class="property-price"]/span[@itemprop="price"]/text()').extract()
             item['Address'] = apartment.xpath('div[@class="row"]/div[contains(@class, "property-metadata col-lg-6")]/h5[@class="property-area"]/text()').extract()
+            item['Pid'] = apartment.xpath('div[@class="row"]/div[contains(@class, "property-metadata col-lg-6")]/h5[@class="property-title"]/a/strong/span/text()').re(r'\w\d+')
             yield item
             
         next_page = response.xpath("//a[@alt='view next property page']/@href").extract_first()

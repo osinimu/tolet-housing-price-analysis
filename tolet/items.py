@@ -14,5 +14,6 @@ class ToletItem(Item):
     property_name = Field()
     Address = Field()
     Price = Field()
+    Pid = Field()
     
    
