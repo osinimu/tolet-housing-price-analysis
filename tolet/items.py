@@ -11,7 +11,7 @@ from scrapy.item import Item, Field
 class ToletItem(Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    property_name = Field()
+    Property_name = Field()
     Address = Field()
     Price = Field()
     Pid = Field()

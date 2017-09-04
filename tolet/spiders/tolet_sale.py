@@ -14,12 +14,12 @@ class ToletSale(scrapy.Spider):
    
     
     def parse(self, response):
-        properties = Selector(response).xpath('//div[@class="property"]')
+        properties = Selector(response).xpath('//div[@class="property "]')
         
         
         for apartment in properties:
             item = ToletItem()
-            item['property_name'] = apartment.xpath('div[@class="row"]/div[contains(@class, "property-caption col-lg-12")]/a/h2/text()').extract()
+            item['Property_name'] = apartment.xpath('div[@class="row"]/div[contains(@class, "property-caption col-lg-12")]/a/h2/text()').extract()
             item['Price'] = apartment.xpath('div[@class="row"]/div[contains(@class, "property-metadata col-lg-6")]/h5[@class="property-price"]/span[@itemprop="price"]/text()').extract()
             item['Address'] = apartment.xpath('div[@class="row"]/div[contains(@class, "property-metadata col-lg-6")]/h5[@class="property-area"]/text()').extract()
             item['Pid'] = apartment.xpath('div[@class="row"]/div[contains(@class, "property-metadata col-lg-6")]/h5[@class="property-title"]/a/strong/span/text()').re(r'\w\d+')
